@@ -105,7 +105,7 @@ async function getCpu(name) {
     break;
     }
     const stats = {
-        CpuUsage: cpuusage
+        CpuUsage: cpuusage.toLocaleString()
     }
     return stats;
 }
@@ -144,9 +144,9 @@ client.on('ready', async (client) => {
 
     const Embed =  new MessageEmbed()
     .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL({ dynamic: true}) })
-    .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaBot').then(x => x.CpuUsage))} %`)
-    .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaSecurity').then(x => x.CpuUsage))} %`)
-    .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaTickets').then(x => x.CpuUsage))} %`)
+    .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}\n > **CPU:** ${(await getCpu('ArcadiaBot').then(x => x.CpuUsage))} %`)
+    .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}\n > **CPU:** ${(await getCpu('ArcadiaSecurity').then(x => x.CpuUsage))} %`)
+    .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}\n > **CPU:** ${(await getCpu('ArcadiaTickets').then(x => x.CpuUsage))} %`)
     .setFooter({ text: `Bots Status`, iconURL: guild.iconURL({ dynamic: true })})
     .setColor('GREEN')
     .setTimestamp()
@@ -155,9 +155,9 @@ client.on('ready', async (client) => {
             setInterval(async () => {
                 const EmbedEdit =  new MessageEmbed()
                 .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL({ dynamic: true}) })
-                .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaBot').then(x => x.CpuUsage))} %`)
-                .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaSecurity').then(x => x.CpuUsage))} %`)
-                .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaTickets').then(x => x.CpuUsage))} %`)
+                .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}\n > **CPU:** ${(await getCpu('ArcadiaBot').then(x => x.CpuUsage))} %`)
+                .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}\n > **CPU:** ${(await getCpu('ArcadiaSecurity').then(x => x.CpuUsage))} %`)
+                .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}\n > **CPU:** ${(await getCpu('ArcadiaTickets').then(x => x.CpuUsage))} %`)
                 .setFooter({ text: `Bots Status`, iconURL: guild.iconURL({ dynamic: true })})
                 .setColor('GREEN')
                 .setTimestamp()
