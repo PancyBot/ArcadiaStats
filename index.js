@@ -131,10 +131,10 @@ console.log(getCpu('ArcadiaBot').then(CpuUsage => console.log(CpuUsage)))
     await cpud.establecer('ArcadiaSecurity', {
         UsageCpu: 'null'
     })
-    await cpud.establecer('ArcadiaTickets'), {
+    await cpud.establecer('ArcadiaTickets', {
         UsageCpu: 'null'
-    }
- }, 30 * 1000)
+    })
+ }, 45 * 1000)
 
 client.on('ready', async (client) => {
     let ArcadiaBot = ''

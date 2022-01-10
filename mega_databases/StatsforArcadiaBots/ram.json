@@ -4,7 +4,11 @@
     "TotalRam": "null"
   },
   "ArcadiaTickets": {
-    "UsageRam": "107 MB",
+    "UsageRam": "112 MB",
     "TotalRam": "500 MB"
+  },
+  "ArcadiaSecurity": {
+    "UsageRam": "null",
+    "TotalRam": "null"
   }
 }
