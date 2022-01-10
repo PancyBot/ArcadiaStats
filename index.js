@@ -39,7 +39,7 @@ async function getRam(name) {
     let totalram = 0
     switch (name) {
         case 'ArcadiaBot':
-            if(!ram.obtener(name)) {
+            if(!ram.tiene(name)) {
                 ramusage = "null"
                 totalram = "null"
             } else {
@@ -48,7 +48,7 @@ async function getRam(name) {
             }
         break;
         case 'ArcadiaSecurity':
-            if(!ram.obtener(name)) {
+            if(!ram.tiene(name)) {
                 ramusage = "null"
                 totalram = "null"
             } else {
