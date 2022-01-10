@@ -12,7 +12,7 @@ const client = new Client({
 /**
  * 
  * @param {String} status 
- * @returns 
+ * @returns {String}
  */
 function getStatus(status) {
     let statusExt = ''
@@ -32,7 +32,7 @@ function getStatus(status) {
 /**
  * 
  * @param {String} name 
- * @returns 
+ * @returns {Promise}
  */
 async function getRam(name) {
     let ramusage = 0
@@ -40,8 +40,8 @@ async function getRam(name) {
     switch (name) {
         case 'ArcadiaBot':
             if(!ram.obtener(name)) {
-                ramusage = null
-                totalram = null
+                ramusage = "null"
+                totalram = "null"
             } else {
                 ramusage = await ram.obtener('ArcadiaBot' + ".UsageRam")
                 totalram = await ram.obtener('ArcadiaBot' + ".TotalRam")
@@ -49,20 +49,20 @@ async function getRam(name) {
         break;
         case 'ArcadiaSecurity':
             if(!ram.obtener(name)) {
-                ramusage = null
-                totalram = null
+                ramusage = "null"
+                totalram = "null"
             } else {
-                ramusage = await ram.obtener('ArcadiaSecurity')
-                totalram = await ram.obtener('ArcadiaSecurity')
+                ramusage = await ram.obtener('ArcadiaSecurity' + ".UsageRam")
+                totalram = await ram.obtener('ArcadiaSecurity' + ".TotalRam")
             }
         break;        
         case 'ArcadiaTickets':
-        if(!ram.obtener(name)) {
-            ramusage = null
-            totalram = null
+        if(!ram.tiene(name)) {
+            ramusage = "null"
+            totalram = "null"
         } else {
-            ramusage = await ram.obtener('ArcadiaTickets')
-            totalram = await ram.obtener('ArcadiaTickets')
+            ramusage = await ram.obtener('ArcadiaTickets' + ".UsageRam")
+            totalram = await ram.obtener('ArcadiaTickets' + ".TotalRam")
         }
     break;
     }
@@ -106,9 +106,9 @@ client.on('ready', async (client) => {
 
     const Embed =  new MessageEmbed()
     .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL({ dynamic: true}) })
-    .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\nRam: ${(await getRam('ArcadiaBot').then(x => x.RamUsage)).toLocaleString()}mb/${(await getRam('ArcadiaBot').then(x => x.TotalRam)).toLocaleString()}mb`)
-    .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}`)
-    .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}`)
+    .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}`)
+    .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}`)
+    .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}`)
     .setFooter({ text: `Bots Status`, iconURL: guild.iconURL({ dynamic: true })})
     .setColor('GREEN')
     .setTimestamp()
@@ -117,9 +117,9 @@ client.on('ready', async (client) => {
             setInterval(async () => {
                 const EmbedEdit =  new MessageEmbed()
                 .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL({ dynamic: true}) })
-                .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}`)
-                .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}`)
-                .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}`)
+                .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}`)
+                .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}`)
+                .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}`)
                 .setFooter({ text: `Bots Status`, iconURL: guild.iconURL({ dynamic: true })})
                 .setColor('GREEN')
                 .setTimestamp()
