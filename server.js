@@ -63,8 +63,9 @@ app.post('/stats', async (req, res) => {
         UsageCpu: cpu
     })
     res
+	  .status(200)
       .send({ message: 'Autorizado', status: 200 })
-      .sendStatus(200)
+      
 })
  
 module.exports = () => {

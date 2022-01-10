@@ -1,6 +1,10 @@
 {
-    "ArcadiaBot" : {
-        "UsageRam": "null",
-        "TotalRam": "null"
-    }
+  "ArcadiaBot": {
+    "UsageRam": "null",
+    "TotalRam": "null"
+  },
+  "ArcadiaTickets": {
+    "UsageRam": "109 MB",
+    "TotalRam": "500 MB"
+  }
 }
