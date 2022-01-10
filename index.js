@@ -90,22 +90,22 @@ async function getCpu(name) {
             }
         break;
         case 'ArcadiaSecurity':
-            if(!ram.tiene(name)) {
+            if(!cpud.tiene(name)) {
                 cpuusage = "null"
             } else {
-                cpuusage = await ram.obtener('ArcadiaSecurity' + ".UsageCpu") 
+                cpuusage = await cpud.obtener('ArcadiaSecurity' + ".UsageCpu") 
             }
         break;        
         case 'ArcadiaTickets':
-        if(!ram.tiene(name)) {
+        if(!cpud.tiene(name)) {
             cpuusage = "null" 
         } else {
-            cpuusage = await ram.obtener('ArcadiaTickets' + ".UsageCpu") 
+            cpuusage = await cpud.obtener('ArcadiaTickets' + ".UsageCpu") 
         }
     break;
     }
     const stats = {
-        CpuUsage: cpuusage.toLocaleString()
+        CpuUsage: cpuusage
     }
     return stats;
 }
