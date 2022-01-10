@@ -72,7 +72,45 @@ async function getRam(name) {
     }
     return stats;
 }
+
+
+/**
+ * 
+ * @param {String} name 
+ * @returns {Promise} CpuUsage
+ */
+async function getCpu(name) {
+    let cpuusage = 0
+    switch (name) {
+        case 'ArcadiaBot':
+            if(!cpud.tiene(name)) {
+                cpuusage = "null"
+            } else {
+                cpuusage = await cpud.obtener('ArcadiaBot' + ".UsageCpu")
+            }
+        break;
+        case 'ArcadiaSecurity':
+            if(!ram.tiene(name)) {
+                cpuusage = "null"
+            } else {
+                cpuusage = await ram.obtener('ArcadiaSecurity' + ".UsageCpu") 
+            }
+        break;        
+        case 'ArcadiaTickets':
+        if(!ram.tiene(name)) {
+            cpuusage = "null" 
+        } else {
+            cpuusage = await ram.obtener('ArcadiaTickets' + ".UsageCpu") 
+        }
+    break;
+    }
+    const stats = {
+        CpuUsage: cpuusage
+    }
+    return stats;
+}
 console.log(getRam('ArcadiaBot').then(RamUsage => console.log(RamUsage)))
+console.log(getCpu('ArcadiaBot').then(CpuUsage => console.log(CpuUsage)))
 
 
 client.on('ready', async (client) => {
@@ -106,9 +144,9 @@ client.on('ready', async (client) => {
 
     const Embed =  new MessageEmbed()
     .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL({ dynamic: true}) })
-    .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}`)
-    .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}`)
-    .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}`)
+    .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaBot').then(x => x.CpuUsage))} %`)
+    .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaSecurity').then(x => x.CpuUsage))} %`)
+    .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaTickets').then(x => x.CpuUsage))} %`)
     .setFooter({ text: `Bots Status`, iconURL: guild.iconURL({ dynamic: true })})
     .setColor('GREEN')
     .setTimestamp()
@@ -117,9 +155,9 @@ client.on('ready', async (client) => {
             setInterval(async () => {
                 const EmbedEdit =  new MessageEmbed()
                 .setAuthor({ name: client.user.username, iconURL: client.user.avatarURL({ dynamic: true}) })
-                .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}`)
-                .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}`)
-                .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}`)
+                .addField('Arcadia Bot', `${getStatus(ArcadiaBot)}\n > **RAM:** ${(await getRam('ArcadiaBot').then(x => x.RamUsage))} / ${(await getRam('ArcadiaBot').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaBot').then(x => x.CpuUsage))} %`)
+                .addField('Arcadia Security', `${getStatus(ArcadiaSecurity)}\n > **RAM:** ${(await getRam('ArcadiaSecurity').then(x => x.RamUsage))} / ${(await getRam('ArcadiaSecurity').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaSecurity').then(x => x.CpuUsage))} %`)
+                .addField('Arcadia Tickets', `${getStatus(ArcadiaBotTickets)}\n > **RAM:** ${(await getRam('ArcadiaTickets').then(x => x.RamUsage))} / ${(await getRam('ArcadiaTickets').then(x => x.TotalRam))}\n **CPU:** ${(await getCpu('ArcadiaTickets').then(x => x.CpuUsage))} %`)
                 .setFooter({ text: `Bots Status`, iconURL: guild.iconURL({ dynamic: true })})
                 .setColor('GREEN')
                 .setTimestamp()
