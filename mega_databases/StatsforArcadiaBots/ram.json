@@ -1,14 +1,14 @@
 {
   "ArcadiaBot": {
-    "UsageRam": "119 MB",
+    "UsageRam": "114 MB",
     "TotalRam": "47.1 GB"
   },
   "ArcadiaTickets": {
-    "UsageRam": "117 MB",
+    "UsageRam": "115 MB",
     "TotalRam": "500 MB"
   },
   "ArcadiaSecurity": {
-    "UsageRam": "81.0 MB",
+    "UsageRam": "86.2 MB",
     "TotalRam": "47.1 GB"
   }
 }

@@ -148,7 +148,7 @@ console.log(getCpu('ArcadiaBot').then(CpuUsage => console.log(CpuUsage)))
  }, 45979)
 
 client.on('ready', async (client) => {
-	console.log(0)
+	console.log('koooooow')
     let ArcadiaBot = ''
     let ArcadiaSecurity = ''
     let ArcadiaBotTickets = ''
