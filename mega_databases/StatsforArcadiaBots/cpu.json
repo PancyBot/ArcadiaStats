@@ -1,11 +1,11 @@
 {
   "ArcadiaTickets": {
-    "UsageCpu": "null"
+    "UsageCpu": 50
   },
   "ArcadiaBot": {
-    "UsageCpu": "null"
+    "UsageCpu": 2
   },
   "ArcadiaSecurity": {
-    "UsageCpu": "null"
+    "UsageCpu": 2
   }
 }

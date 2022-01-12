@@ -1,5 +1,4 @@
-const Discord = require('discord.js')
-const { Client,  MessageEmbed } = require('discord.js')
+
 const { crearDB } = require('megadb')
 const megadb = require('megadb');
 const ram = new  megadb.crearDB('ram', 'Stats-for-Arcadia-Bots')
@@ -7,9 +6,18 @@ const cpud = new megadb.crearDB('cpu', 'Stats-for-Arcadia-Bots')
 const keepalive = require('./server')
 keepalive()
 require('dotenv').config()
+const { Client, Collection } = require("discord.js");
+
 const client = new Client({
-    intents: 32767
-})
+    intents: 32767,
+});
+module.exports = client;
+
+client.login(process.env.TOKEN)
+.then(a => comsole.info(a))
+.catch(err => console.error(err))
+console.log(0)
+client.channels.cache.get('929447998121971753').send('Prueba')
 /**
  * @param {String} status Estado que retorna la discord api
  * @param {String} name nombre del bot para verificar sus datos
@@ -139,9 +147,10 @@ console.log(getCpu('ArcadiaBot').then(CpuUsage => console.log(CpuUsage)))
     await cpud.establecer('ArcadiaTickets', {
         UsageCpu: 'null'
     })
- }, 45 * 1000)
+ }, 45979)
 
 client.on('ready', async (client) => {
+	console.log(0)
     let ArcadiaBot = ''
     let ArcadiaSecurity = ''
     let ArcadiaBotTickets = ''
@@ -200,5 +209,3 @@ client.on('ready', async (client) => {
 
 })
 
-
-client.login(process.env.TOKEN)
