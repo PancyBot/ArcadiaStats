@@ -6,7 +6,7 @@ const cpud = new megadb.crearDB('cpu', 'Stats-for-Arcadia-Bots')
 const keepalive = require('./server')
 keepalive()
 require('dotenv').config()
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, MessageEmbed } = require("discord.js");
 
 const client = new Client({
     intents: 32767,
@@ -14,10 +14,8 @@ const client = new Client({
 module.exports = client;
 
 client.login(process.env.TOKEN)
-.then(a => comsole.info(a))
 .catch(err => console.error(err))
 console.log(0)
-client.channels.cache.get('929447998121971753').send('Prueba')
 /**
  * @param {String} status Estado que retorna la discord api
  * @param {String} name nombre del bot para verificar sus datos
