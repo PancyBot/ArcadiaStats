@@ -201,7 +201,7 @@ client.on('ready', async (client) => {
                 .setTimestamp()
 
                 await mgs.edit({ embeds: [EmbedEdit] })
-            }, 60 * 1000)
+            }, 300 * 1000)
     })
 
 
