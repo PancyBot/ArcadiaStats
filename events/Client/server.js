@@ -8,9 +8,9 @@ module.exports = {
      * @param {Client} client
      */
     async execute(client) {
-        const Guild  = client.guilds.cache.get('')
+        const Guild  = client.guilds.cache.get('741489702963773501')
         const { channels } = Guild
-        const channel = channels.cache.get('')
+        const channel = channels.cache.get('931375353782485032')
         const options = {
             headers: {
                 'Method': 'GET',
@@ -23,10 +23,10 @@ module.exports = {
         .setColor('YELLOW')
         await channel.send({ embeds: [FirstEmbed] }).then(async msg => {
             setTimeout(async() => {
-                await fetch('https://api.mcsrvstat.us/bedrock/2/149.56.243.216:19194', options).then(async(req, statusCode) => {
-                    console.log(data, statusCode)
-                })  
-            }, 30 * 1000)
+                await fetch('https://api.mcsrvstat.us/2/149.56.243.216:19194', options).then(res => res.json()).then(json => {
+					console.log(json)
+				})
+            }, 1 * 1000)
         })
     }
 }

@@ -13,8 +13,8 @@ module.exports = {
         let ArcadiaBot = ''
         let ArcadiaSecurity = ''
         let ArcadiaBotTickets = ''
-        const guild = client.guilds.cache.get('873371564664574053')
-        const channel = guild.channels.cache.get('930661431655936010')
+        const guild = client.guilds.cache.get('741489702963773501')
+        const channel = guild.channels.cache.get('929447998121971753')
         channel.bulkDelete('1')
             .catch(async(err) => {
                 console.error(err)
