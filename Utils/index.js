@@ -125,9 +125,39 @@ function memory(bytes = 0) {
     return `${Math.floor(megaBytes)} MB`;  
 }
 
+/**
+ * @param {JSON} data 
+ * @returns {Promise<String>}
+ */
+async function getStatusMinecraft(data) {
+    const status = data.online
+    let color = ''
+    let statusExt = ''
+    let statusIf = false 
+    switch (status) {
+        case false:
+            color = 'RED'
+            statusExt = '🔴 | OFFLINE'
+            statusIf = false
+            break;
+    
+        case true:
+            color = 'GREEN',
+            statusExt = '🟢 | ONLINE'
+            statusIf = true
+            break;
+    }
+    const returns = {
+        Color: color,
+        Status: statusExt,
+        StatusIf: statusIf
+    }
+    return returns
+}
 module.exports = {
     getCpu,
     getRam,
     getStatus,
+    getStatusMinecraft,
     memory,
 }
