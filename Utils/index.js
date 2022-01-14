@@ -131,18 +131,18 @@ function memory(bytes = 0) {
  */
 async function getStatusMinecraft(data) {
     const status = data.online
-    let color = ''
+    let color = 0
     let statusExt = ''
     let statusIf = false 
     switch (status) {
         case false:
-            color = 'RED'
+            color = 255, 0, 0
             statusExt = '🔴 | OFFLINE'
             statusIf = false
             break;
     
         case true:
-            color = 'GREEN',
+            color = 0,255, 0
             statusExt = '🟢 | ONLINE'
             statusIf = true
             break;
@@ -152,6 +152,7 @@ async function getStatusMinecraft(data) {
         Status: statusExt,
         StatusIf: statusIf
     }
+	console.log(returns)
     return returns
 }
 module.exports = {

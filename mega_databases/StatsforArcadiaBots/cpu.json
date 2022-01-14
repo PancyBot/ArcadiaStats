@@ -1,9 +1,9 @@
 {
   "ArcadiaTickets": {
-    "UsageCpu": 32
+    "UsageCpu": 34
   },
   "ArcadiaBot": {
-    "UsageCpu": 27
+    "UsageCpu": 30
   },
   "ArcadiaSecurity": {
     "UsageCpu": 31

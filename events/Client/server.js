@@ -28,8 +28,8 @@ module.exports = {
         await channel.send({ embeds: [FirstEmbed] }).then(async msg => {
             setTimeout(async() => {
                 await fetch('https://api.mcsrvstat.us/2/149.56.243.216:19194', options).then(res => res.json()).then(json => {
-                    const status = getStatusMinecraft(json)
-                    if(status.then(x => x.StatusIf) === true) {
+                    getStatusMinecraft(json).then(status => {
+                    if(status.StatusIf === true) {
                         let players = ['']
                         if(!json.players.list) return players = 'No hay jugadores'
                         players = json.players.list.join()
@@ -38,7 +38,7 @@ module.exports = {
                         .addFields([
                             {
                                 name: '**Status:**',
-                                value: status.then(x => x.Status),
+                                value: status.Status,
                                 inline: true
                             },
                             {
@@ -56,18 +56,19 @@ module.exports = {
                                 value: `\`${players}\``
                             }
                         ])
-                        .setColor(status.then(x => x.Color))
+                        .setColor('GREEN')
+                        .setThumbnail(Guild.iconURL({ dynamic: true }))
                         .setFooter({ text: 'Estado actualizado cada 5m', iconURL: Guild.iconURL({ dynamic: true })})
                         .setTimestamp()
 
-                        await msg.edit({ embeds: [FirstEmbedStatus] })
-                    } else if(status.then(x => x.StatusIf) === true) {
+                        msg.edit({ embeds: [FirstEmbedStatus] })
+                    } else if(status.StatusIf === false) {
                         const FirstEmbedStatus = new MessageEmbed()
                         .setTitle('Estado del servidor')
                         .setFields([
                             {
                                 name: '**Status:**',
-                                value: status.then(x => x.Status),
+                                value: status.Status,
                                 inline: true
                             },
                             {
@@ -81,11 +82,12 @@ module.exports = {
                                 inline: true
                             },
                         ])
-                        .setColor(status.then(x => x.Color))
+                        .setColor('RED')
+                        .setThumbnail(Guild.iconURL({ dynamic: true }))
                         .setFooter({ text: 'Estado actualizado cada 5m', iconURL: Guild.iconURL({ dynamic: true })})
                         .setTimestamp()
                         
-                        await msg.edit({ embeds: [FirstEmbedStatus] })
+                        msg.edit({ embeds: [FirstEmbedStatus] })
                     } else {
                         const FirstEmbedStatus = new MessageEmbed()
                         .setTitle('Estado del servidor')
@@ -106,18 +108,20 @@ module.exports = {
                                 inline: true
                             },
                         ])
-                        .setColor('null')
+                        .setColor('RED')
+                        .setThumbnail(Guild.iconURL({ dynamic: true }))
                         .setFooter({ text: 'Estado actualizado cada 5m', iconURL: Guild.iconURL({ dynamic: true })})
                         .setTimestamp()
                         
-                        await msg.edit({ embeds: [FirstEmbedStatus] })
+                        msg.edit({ embeds: [FirstEmbedStatus] })
                     }
+					})
 				})
-            }, 1 * 1000)
+            }, 5 * 1000)
             setInterval(async() => {
                 await fetch('https://api.mcsrvstat.us/2/149.56.243.216:19194', options).then(res => res.json()).then(json => {
-                    const status = getStatusMinecraft(json)
-                    if(status.then(x => x.StatusIf) === true) {
+                    getStatusMinecraft(json).then(status => {
+                    if(status.StatusIf === true) {
                         let players = ['']
                         if(!json.players.list) return players = 'No hay jugadores'
                         players = json.players.list.join()
@@ -126,7 +130,7 @@ module.exports = {
                         .addFields([
                             {
                                 name: '**Status:**',
-                                value: status.then(x => x.Status),
+                                value: status.Status,
                                 inline: true
                             },
                             {
@@ -144,18 +148,19 @@ module.exports = {
                                 value: `\`${players}\``
                             }
                         ])
-                        .setColor(status.then(x => x.Color))
+                        .setColor('GREEN')
+                        .setThumbnail(Guild.iconURL({ dynamic: true }))
                         .setFooter({ text: 'Estado actualizado cada 5m', iconURL: Guild.iconURL({ dynamic: true })})
                         .setTimestamp()
 
-                        await msg.edit({ embeds: [FirstEmbedStatus] })
-                    } else if(status.then(x => x.StatusIf) === true) {
+                        msg.edit({ embeds: [FirstEmbedStatus] })
+                    } else if(status.StatusIf === false) {
                         const FirstEmbedStatus = new MessageEmbed()
                         .setTitle('Estado del servidor')
                         .setFields([
                             {
                                 name: '**Status:**',
-                                value: status.then(x => x.Status),
+                                value: status.Status,
                                 inline: true
                             },
                             {
@@ -169,11 +174,12 @@ module.exports = {
                                 inline: true
                             },
                         ])
-                        .setColor(status.then(x => x.Color))
+                        .setColor('RED')
+                        .setThumbnail(Guild.iconURL({ dynamic: true }))
                         .setFooter({ text: 'Estado actualizado cada 5m', iconURL: Guild.iconURL({ dynamic: true })})
                         .setTimestamp()
                         
-                        await msg.edit({ embeds: [FirstEmbedStatus] })
+                        msg.edit({ embeds: [FirstEmbedStatus] })
                     } else {
                         const FirstEmbedStatus = new MessageEmbed()
                         .setTitle('Estado del servidor')
@@ -194,12 +200,14 @@ module.exports = {
                                 inline: true
                             },
                         ])
-                        .setColor('null')
+                        .setColor('RED')
+                        .setThumbnail(Guild.iconURL({ dynamic: true }))
                         .setFooter({ text: 'Estado actualizado cada 5m', iconURL: Guild.iconURL({ dynamic: true })})
                         .setTimestamp()
                         
-                        await msg.edit({ embeds: [FirstEmbedStatus] })
+                        msg.edit({ embeds: [FirstEmbedStatus] })
                     }
+					})
 				})
             }, 5 * 60 * 1000)
         })
