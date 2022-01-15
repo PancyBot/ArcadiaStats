@@ -34,11 +34,11 @@ module.exports = {
 
         interaction.followUp({ embeds: [FirstEmbed] }).then(async(msg) => {
         console.log(serverId)
-            const api = 'iY4A1f9SedyrpmnKzvmSGDACu7UJYXFXGu5H8PsOc5U8yvtn'
+            const api = process.env.TOKEN
             
             const { statusCode, data } = await curly.get(`https://panel.danbot.host/api/client/servers/${serverId}/resources`, {
                 httpHeader: [
-                        `Authorization: Bearer 3nNG02mGxsakDBA2DEDb2ROAh6OZyGVvdx5urokP5mXhFP9m`,
+                        `Authorization: Bearer ${process.env.APIKEY}`,
                         'Content-Type: application/json',
                         'Accept: application/json'
                     ],
@@ -72,7 +72,7 @@ module.exports = {
             )
             const saw = await curly.get(`https://panel.danbot.host/api/client/servers/${serverId}/resources`, {
                 httpHeader: [
-                    `Authorization: Bearer 3nNG02mGxsakDBA2DEDb2ROAh6OZyGVvdx5urokP5mXhFP9m`,
+                    `Authorization: Bearer ${process.env.TOKEN}`,
                     'Content-Type: application/json',
                     'Accept: application/json'
                 ],
@@ -88,7 +88,7 @@ module.exports = {
             if(statusCode == 403) {
                 const options = {
                     headers: {
-                        'Authorization': 'Bearer 3nNG02mGxsakDBA2DEDb2ROAh6OZyGVvdx5urokP5mXhFP9m',
+                        'Authorization': `Bearer ${process.env.APIKEY}`,
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     }
